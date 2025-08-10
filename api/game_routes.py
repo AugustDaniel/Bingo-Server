@@ -14,9 +14,9 @@ def get_game(game_service: GameService = Depends(get_game_service)):
     return game_service.get_game()
 
 
-@router.post("/{room_name}", response_model=RoomModel)
-def create_room(room_name: str, service: GameService = Depends(get_game_service)):
-    room: RoomModel | None = service.create_room(room_name)
+@router.post("/", response_model=RoomModel)
+def create_room(room: RoomModel, service: GameService = Depends(get_game_service)):
+    room: RoomModel | None = service.create_room(room)
     if room:
         return room
     else:

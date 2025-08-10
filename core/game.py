@@ -11,10 +11,12 @@ class Game:
         self.max_capacity: int = 20
         self.max_rooms: int = 20
 
-    def create_new_room(self, name: str) -> Room | None:
+    def create_new_room(self, name: str, capacity: int) -> Room | None:
         if len(self.rooms) >= self.max_rooms:
-            return None
-        room = Room(str(uuid.uuid4()), name, self.max_capacity)
+            raise 
+
+
+        room = Room(str(uuid.uuid4()), name, capacity)
         self.rooms[room.room_id] = room
         return room
 
