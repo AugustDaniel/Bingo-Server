@@ -1,5 +1,4 @@
-from fastapi import HTTPException, FastAPI
-from starlette.requests import Request
+from fastapi import HTTPException, FastAPI, Request
 
 from exceptions import *
 
