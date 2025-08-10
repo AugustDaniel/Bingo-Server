@@ -1,8 +1,11 @@
-from typing import List
+from typing import List, Dict
 
 from fastapi import APIRouter
 
-from models import Room
+from models.room_model import RoomModel
 
 router = APIRouter(prefix="/game", tags=["game"])
 
+
+# @router.get("/rooms", response_model=Dict[Room])
+# def get_rooms() -> Dict[Room]:

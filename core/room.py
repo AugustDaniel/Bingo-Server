@@ -21,3 +21,6 @@ class Room:
             self.players.remove(player)
             return True
         return False
+
+    def is_full(self) -> bool:
+        return len(self.players) >= self.capacity

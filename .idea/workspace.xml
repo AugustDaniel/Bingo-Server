@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b68ef968-26cf-49be-aca2-945aee04b2ea" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/schemas/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/schemas/room_schema.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/game_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/game_routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/game.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/player.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/room.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +59,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\user\PycharmProjects\Bingo\core\bingo_card" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Bingo" type="Python.FastAPI">
       <option name="file" value="$PROJECT_DIR$/main.py" />
@@ -84,7 +96,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1754753893939</updated>
-      <workItem from="1754753894756" duration="7597000" />
+      <workItem from="1754753894756" duration="15600000" />
     </task>
     <servers />
   </component>
