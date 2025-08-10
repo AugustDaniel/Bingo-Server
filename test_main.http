@@ -15,5 +15,5 @@ Accept: application/json
 
 ###
 
-POST http://127.0.0.1:8000/game/test-room
+POST http://127.0.0.1:8000/game/?name=test&capacity=10
 Accept: application/json
