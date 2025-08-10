@@ -1,4 +1,4 @@
-from core.game import Game
+from core.game import Game, MaxRoomsReached, CapacityTooHigh
 from models import *
 from mapper import *
 

@@ -1,6 +1,7 @@
 from typing import Dict
 
 from core.session.room import Room
+from exceptions import MaxRoomsReached, CapacityTooHigh
 
 import uuid
 
@@ -13,10 +14,12 @@ class Game:
 
     def create_new_room(self, name: str = "room", capacity: int | None = None) -> Room | None:
         if len(self.rooms) >= self.max_rooms:
-            return None
+            raise MaxRoomsReached("Max rooms reached")
 
         if capacity is None:
             capacity = self.max_capacity
+        elif capacity > self.max_capacity:
+            raise CapacityTooHigh("Capacity too high")
 
         room = Room(str(uuid.uuid4()), name, capacity)
         self.rooms[room.room_id] = room
