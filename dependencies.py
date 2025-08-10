@@ -1,12 +1,7 @@
 from services.game_service import GameService
-from services.play_service import PlayService
 
-game_service: GameService = GameService()
-play_service: PlayService = PlayService()
+__game_service: GameService = GameService()
 
 
 def get_game_service() -> GameService:
-    return game_service
-
-def get_play_service() -> PlayService:
-    return play_service
+    return __game_service

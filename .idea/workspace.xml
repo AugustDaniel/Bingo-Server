@@ -5,15 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b68ef968-26cf-49be-aca2-945aee04b2ea" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/schemas/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schemas/room_schema.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/game_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/game_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/game.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/player.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/room.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/room.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/session/room.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dependencies.py" beforeDir="false" afterPath="$PROJECT_DIR$/dependencies.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapper/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapper/response_mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/response_mapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/game_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/game_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/play_service.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_main.http" beforeDir="false" afterPath="$PROJECT_DIR$/test_main.http" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +48,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "FastAPI.Bingo.executor": "Run",
+    "HTTP Request.test_main | #3.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
@@ -61,10 +66,27 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\user\PycharmProjects\Bingo\core\session" />
       <recent name="C:\Users\user\PycharmProjects\Bingo\core\bingo_card" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunDashboard">
+    <option name="configurationStatuses">
+      <map>
+        <entry key="HttpClient.HttpRequestRunConfigurationType">
+          <value>
+            <map>
+              <entry key="test_main | #3" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="RunManager" selected="FastAPI.Bingo">
+    <configuration name="test_main | #3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test_main.http" executionIdentifier="#3" index="3" runType="Run single request">
+      <method v="2" />
+    </configuration>
     <configuration name="Bingo" type="Python.FastAPI">
       <option name="file" value="$PROJECT_DIR$/main.py" />
       <module name="Bingo" />
@@ -80,6 +102,11 @@
       <option name="launchJavascriptDebuger" value="false" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP Request.test_main | #3" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -96,11 +123,14 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1754753893939</updated>
-      <workItem from="1754753894756" duration="15600000" />
+      <workItem from="1754753894756" duration="21753000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Bingo$Bingo.coverage" NAME="Bingo Coverage Results" MODIFIED="1754836994607" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

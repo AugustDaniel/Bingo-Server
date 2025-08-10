@@ -1,0 +1,12 @@
+{
+  "rooms": {
+    "ec4aa710-96ca-4be1-adc3-fcad0e216dcc": {
+      "room_id": "ec4aa710-96ca-4be1-adc3-fcad0e216dcc",
+      "name": "test-room",
+      "capacity": 20,
+      "is_full": false
+    }
+  },
+  "max_capacity": 20,
+  "max_rooms": 20
+}

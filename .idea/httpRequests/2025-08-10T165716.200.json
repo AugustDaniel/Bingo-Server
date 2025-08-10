@@ -1,0 +1,6 @@
+{
+  "room_id": "ec4aa710-96ca-4be1-adc3-fcad0e216dcc",
+  "name": "test-room",
+  "capacity": 20,
+  "is_full": false
+}

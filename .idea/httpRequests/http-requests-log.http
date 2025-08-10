@@ -1,0 +1,85 @@
+GET http://127.0.0.1:8000/game/
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-08-10T165728.200.json
+
+###
+
+POST http://127.0.0.1:8000/game/test-room
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+content-length: 0
+
+<> 2025-08-10T165716.200.json
+
+###
+
+POST http://127.0.0.1:8000/game/test-room
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+content-length: 0
+
+<> 2025-08-10T165457.500.txt
+
+###
+
+POST http://127.0.0.1:8000/game/test-room
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+content-length: 0
+
+<> 2025-08-10T165413.500.txt
+
+###
+
+POST http://127.0.0.1:8000/game/test-room
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+content-length: 0
+
+<> 2025-08-10T165238.500.txt
+
+###
+
+GET http://127.0.0.1:8000/game/
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-08-10T164331.200.json
+
+###
+
+GET http://127.0.0.1:8000/game/
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-08-10T164323.200.json
+
+###
+
+GET http://127.0.0.1:8000/game/
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-08-10T164320.200.json
+
+###
+
+GET http://127.0.0.1:8000/game/
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-08-10T164245.200.json
+
+###
+

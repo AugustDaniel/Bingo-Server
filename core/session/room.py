@@ -1,6 +1,7 @@
 from typing import List
 
-from .player import Player
+from core.player import Player
+from core.session.caller import Caller
 
 
 class Room:
@@ -9,6 +10,7 @@ class Room:
         self.name: str = name
         self.capacity: int = capacity
         self.players: List[Player] = []
+        self.caller: Caller = Caller()
 
     def join_room(self, player: Player) -> bool:
         if len(self.players) < self.capacity:
@@ -24,3 +26,9 @@ class Room:
 
     def is_full(self) -> bool:
         return len(self.players) >= self.capacity
+
+    def draw_number(self) -> int | None:
+        return self.caller.draw()
+
+    def is_over(self) -> bool:
+        return self.caller.is_done()
