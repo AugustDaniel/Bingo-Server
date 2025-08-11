@@ -1,6 +1,6 @@
 from typing import Dict
 
-from core import Player
+from .player import Player
 from core.session.room import Room
 from exceptions import MaxRoomsReached, CapacityTooHigh, RoomNotFound, InvalidPlayer
 
