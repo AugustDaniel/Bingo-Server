@@ -2,6 +2,7 @@ from typing import List
 
 from core.player import Player
 from core.session.caller import Caller
+from exceptions import RoomFull, InvalidPlayer
 
 
 class Room:
@@ -12,17 +13,17 @@ class Room:
         self.players: List[Player] = []
         self.caller: Caller = Caller()
 
-    def join_room(self, player: Player) -> bool:
-        if len(self.players) < self.capacity:
-            self.players.append(player)
-            return True
-        return False
+    def join(self, player: Player) -> None:
+        if self.is_full():
+            raise RoomFull("Room is full")
 
-    def leave_room(self, player: Player) -> bool:
-        if len(self.players) < self.capacity:
-            self.players.remove(player)
-            return True
-        return False
+        self.players.append(player)
+
+    def leave(self, player: Player) -> None:
+        if player not in self.players:
+            raise InvalidPlayer("Player not in room")
+
+        self.players.remove(player)
 
     def is_full(self) -> bool:
         return len(self.players) >= self.capacity

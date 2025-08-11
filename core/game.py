@@ -1,7 +1,8 @@
 from typing import Dict
 
+from core import Player
 from core.session.room import Room
-from exceptions import MaxRoomsReached, CapacityTooHigh
+from exceptions import MaxRoomsReached, CapacityTooHigh, RoomNotFound, InvalidPlayer
 
 import uuid
 
@@ -26,5 +27,16 @@ class Game:
         return room
 
     def remove_room(self, room: Room) -> None:
-        if room.room_id in self.rooms:
+        if room and room.room_id in self.rooms:
             del self.rooms[room.room_id]
+        else:
+            raise RoomNotFound("Invalid room")
+
+    def add_player_to_room(self, player: Player, room: Room) -> None:
+        if not room or room.room_id not in self.rooms:
+            raise RoomNotFound("Invalid room")
+
+        if not player:
+            raise InvalidPlayer("Invalid player")
+
+        room.join()

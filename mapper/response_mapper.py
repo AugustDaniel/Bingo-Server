@@ -1,5 +1,5 @@
-from core import Room, Game
-from models import RoomModel, GameModel
+from core import Room, Game, Player
+from models import RoomModel, GameModel, PlayerModel
 
 
 def map_room_to_response(room: Room) -> RoomModel:
@@ -13,7 +13,11 @@ def map_room_to_response(room: Room) -> RoomModel:
 
 def map_game_to_response(game: Game) -> GameModel:
     return GameModel(
-        rooms={game.rooms[room].room_id: map_room_to_response(game.rooms[room]) for room in game.rooms},
+        rooms={room: map_room_to_response(game.rooms[room]) for room in game.rooms},
         max_capacity=game.max_capacity,
         max_rooms=game.max_rooms,
     )
+
+
+def map_response_to_player(player: PlayerModel) -> Player:
+    return Player(player.name)
