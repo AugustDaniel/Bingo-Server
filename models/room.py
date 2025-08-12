@@ -6,3 +6,8 @@ class RoomModel(BaseModel):
     name: str = Field(..., examples=["Room1", "Room2"])
     capacity: int = Field(..., examples=[20])
     is_full: bool = Field(..., examples=[True, False])
+
+
+class RoomJoinResponse(BaseModel):
+    room: RoomModel = Field(...)
+    websocket_url: str = Field(...)
