@@ -14,7 +14,7 @@ class Game:
         self.max_rooms: int = 20
         self.players: Dict[str, Player] = {}
 
-    def create_new_room(self, name: str = "room", capacity: int | None = None) -> Room | None:
+    def create_new_room(self, name: str = "room", capacity: int | None = None) -> Room:
         if len(self.rooms) >= self.max_rooms:
             raise MaxRoomsReached("Max rooms reached")
 
@@ -27,7 +27,7 @@ class Game:
         self.rooms[room.room_id] = room
         return room
 
-    def create_new_player(self, player_name) -> Player:
+    def create_new_player(self, player_name: str) -> Player:
         player = Player(player_id=str(uuid.uuid4()), name=player_name)
         self.players[player.id] = player
         return player

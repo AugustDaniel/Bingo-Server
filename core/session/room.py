@@ -6,7 +6,7 @@ from exceptions import RoomFull, InvalidPlayer
 
 
 class Room:
-    def __init__(self, room_id, name, capacity):
+    def __init__(self, room_id: str, name: str, capacity: int):
         self.room_id: str = room_id
         self.name: str = name
         self.capacity: int = capacity
