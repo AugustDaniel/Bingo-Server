@@ -9,7 +9,7 @@ class RoomModel(BaseModel):
 
 
 class RoomPostModel(BaseModel):
-    name: str = Field(..., examples=["1112"])
+    name: str = Field(..., examples=["room1", "myroom"])
     capacity: int = Field(..., examples=[20])
 
 
