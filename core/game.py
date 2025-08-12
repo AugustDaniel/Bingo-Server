@@ -39,4 +39,4 @@ class Game:
         if not player:
             raise InvalidPlayer("Invalid player")
 
-        room.join()
+        room.join(player)
