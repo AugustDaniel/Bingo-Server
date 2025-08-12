@@ -3,7 +3,7 @@ from dependencies import get_game_service
 from models import GameModel, RoomModel, RoomPostModel
 from models.player import PlayerPostModel
 from models import RoomJoinResponse
-from services.game_service import GameService
+from services import GameService
 
 router = APIRouter(
     prefix="/game",
