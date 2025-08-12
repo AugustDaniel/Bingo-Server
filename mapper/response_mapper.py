@@ -1,5 +1,5 @@
 from core import Room, Game, Player
-from models import RoomModel, GameModel, PlayerModel
+from models import RoomModel, GameModel, PlayerModel, PlayerPostModel
 
 
 def map_room_to_response(room: Room) -> RoomModel:
@@ -19,5 +19,8 @@ def map_game_to_response(game: Game) -> GameModel:
     )
 
 
-def map_response_to_player(player: PlayerModel) -> Player:
-    return Player(player.name)
+def map_player_to_response(player: Player) -> PlayerModel:
+    return PlayerModel(
+        name=player.name,
+        id=player.id,
+    )

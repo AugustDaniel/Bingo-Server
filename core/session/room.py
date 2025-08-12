@@ -1,4 +1,4 @@
-from typing import List
+from typing import Dict
 
 from core.player import Player
 from core.session.caller import Caller
@@ -10,20 +10,23 @@ class Room:
         self.room_id: str = room_id
         self.name: str = name
         self.capacity: int = capacity
-        self.players: List[Player] = []
+        self.players: Dict[str, Player] = {}
         self.caller: Caller = Caller()
 
     def join(self, player: Player) -> None:
         if self.is_full():
             raise RoomFull("Room is full")
 
-        self.players.append(player)
+        if player.id in self.players:
+            raise InvalidPlayer("Player is already in the room")
+
+        self.players[player.id] = player
 
     def leave(self, player: Player) -> None:
-        if player not in self.players:
+        if player.id not in self.players:
             raise InvalidPlayer("Player not in room")
 
-        self.players.remove(player)
+        self.players.pop(player.id)
 
     def is_full(self) -> bool:
         return len(self.players) >= self.capacity

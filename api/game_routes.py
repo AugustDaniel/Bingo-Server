@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends
 from dependencies import get_game_service
 from models import GameModel, RoomModel, PlayerModel
+from models.player import PlayerPostModel
 from models.room_join_response import RoomJoinResponse
 from services.game_service import GameService
 
@@ -21,7 +22,7 @@ def create_room(room: RoomModel, service: GameService = Depends(get_game_service
 
 
 @router.post("/rooms/{room_id}/players", response_model=RoomJoinResponse)
-def join_room(room_id: str, player: PlayerModel, service: GameService = Depends(get_game_service)):
-    room = service.join_room(room_id, player)
-    websocket_url = f'/play/ws/{room_id}?player_name={player.name}'
+def join_room(room_id: str, player_post: PlayerPostModel, service: GameService = Depends(get_game_service)):
+    room, player = service.join_room(room_id, player_post)
+    websocket_url = f'/play/ws/{room_id}?player_name={player.id}'
     return RoomJoinResponse(room=room, websocket_url=websocket_url)
