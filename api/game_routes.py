@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends
 from dependencies import get_game_service
-from models import GameModel, RoomModel, PlayerModel
+from models import GameModel, RoomModel, RoomPostModel
 from models.player import PlayerPostModel
 from models import RoomJoinResponse
 from services.game_service import GameService
@@ -17,7 +17,7 @@ def get_game(service: GameService = Depends(get_game_service)):
 
 
 @router.post("/rooms", response_model=RoomModel)
-def create_room(room: RoomModel, service: GameService = Depends(get_game_service)):
+def create_room(room: RoomPostModel, service: GameService = Depends(get_game_service)):
     return service.create_room(room)
 
 

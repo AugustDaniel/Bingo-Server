@@ -7,6 +7,7 @@ __all__ = [
     "BingoCardModel",
     "RoomModel",
     "RoomJoinResponse",
+    "RoomPostModel",
     "GameModel",
     "PlayerModel",
     "PlayerPostModel"

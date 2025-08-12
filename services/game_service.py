@@ -10,7 +10,7 @@ class GameService:
     def get_game(self) -> GameModel:
         return map_game_to_response(self.game)
 
-    def create_room(self, room: RoomModel) -> RoomModel | None:
+    def create_room(self, room: RoomPostModel) -> RoomModel | None:
         return map_room_to_response(self.game.create_new_room(room.name, room.capacity))
 
     def join_room(self, room_id: str, player: PlayerPostModel) -> tuple[RoomModel, PlayerModel]:
