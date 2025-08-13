@@ -1,2 +1,2 @@
-from .game_service import GameService
+from .game import GameService
 from .play import PlayService
