@@ -4,8 +4,8 @@ from mapper import *
 
 
 class GameService:
-    def __init__(self):
-        self.game = Game()
+    def __init__(self, game: Game):
+        self.game = game
 
     def get_game(self) -> GameModel:
         return map_game_to_response(self.game)
