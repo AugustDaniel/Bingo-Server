@@ -12,6 +12,7 @@ class Room:
         self.capacity: int = capacity
         self.players: Dict[str, Player] = {}
         self.caller: Caller = Caller()
+        self.is_started: bool = False
 
     def join(self, player: Player) -> None:
         if self.is_full():

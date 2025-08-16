@@ -23,6 +23,9 @@ def room_full_handler(request: Request, exception: Exception):
 def room_not_found_handler(request: Request, exception: Exception):
     return JSONResponse(status_code=404, content={"error": str(exception)})
 
+def invalid_websocket_join_handler(request: Request, exception: Exception):
+    return JSONResponse(status_code=400, content={"error": str(exception)})
+
 
 exception_handlers = {
     CapacityTooHigh: capacity_to_high_handler,
@@ -30,4 +33,5 @@ exception_handlers = {
     InvalidPlayer: invalid_player_handler,
     RoomFull: room_full_handler,
     RoomNotFound: room_not_found_handler,
+    InvalidWebSocketJoin: invalid_websocket_join_handler
 }

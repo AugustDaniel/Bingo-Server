@@ -16,3 +16,6 @@ class RoomNotFound(Exception):
 
 class RoomFull(Exception):
     pass
+
+class InvalidWebSocketJoin(Exception):
+    pass

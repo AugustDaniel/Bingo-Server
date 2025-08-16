@@ -2,6 +2,7 @@ from .card import BingoCardModel
 from .room import *
 from .game import GameModel
 from .player import *
+from .websocket import *
 
 __all__ = [
     "BingoCardModel",
@@ -10,5 +11,6 @@ __all__ = [
     "RoomPostModel",
     "GameModel",
     "PlayerModel",
-    "PlayerPostModel"
+    "PlayerPostModel",
+    "WebSocketMessage",
 ]
