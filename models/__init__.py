@@ -1,4 +1,4 @@
-from .card import BingoCardModel
+from .card import *
 from .room import *
 from .game import GameModel
 from .player import *

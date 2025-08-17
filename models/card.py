@@ -1,5 +1,10 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
+
+
+class BingoCardCellModel(BaseModel):
+    content: str | int = Field(...)
+    scratched: bool = Field(...)
 
 
 class BingoCardModel(BaseModel):
-    pass
+    card: list[list[BingoCardCellModel]] = Field(..., title="Card")

@@ -2,8 +2,9 @@ import asyncio
 
 from fastapi import WebSocket, WebSocketDisconnect
 
-from core import Game
+from core import Game, BingoCardFactory
 from exceptions import InvalidWebSocketJoin
+from mapper import map_bingo_card_to_response
 from models import WebSocketMessage
 
 
@@ -19,6 +20,13 @@ class PlayService:
         await websocket.accept()
         self.connections[player_id] = websocket
 
+        await self.send(
+            WebSocketMessage(
+                type="card",
+                message=map_bingo_card_to_response(BingoCardFactory.create())
+            )
+        )
+
         if not self.game.rooms[room_id].is_started:
             asyncio.create_task(self.__start_game(room_id))
 
@@ -27,7 +35,7 @@ class PlayService:
             try:
                 await self.connections[player_id].send_json(message)
             except WebSocketDisconnect as e:
-                pass  # TODO maybe
+                pass  # TODO maybe make separate connection manager class
 
     async def send(self, player_id: str, message: WebSocketMessage):
         await self.connections[player_id].send_json(message)

@@ -1,5 +1,5 @@
-from core import Room, Game, Player
-from models import RoomModel, GameModel, PlayerModel, PlayerPostModel
+from core import Room, Game, Player, BingoCard
+from models import RoomModel, GameModel, PlayerModel, BingoCardModel, BingoCardCellModel
 
 
 def map_room_to_response(room: Room) -> RoomModel:
@@ -23,4 +23,19 @@ def map_player_to_response(player: Player) -> PlayerModel:
     return PlayerModel(
         name=player.name,
         id=player.id,
+    )
+
+
+def map_bingo_card_to_response(bingo_card: BingoCard) -> BingoCardModel:
+    return BingoCardModel(
+        card=[
+            [
+                BingoCardCellModel(
+                    content=cell.content,
+                    scratched=cell.scratched,
+                )
+                for cell in column
+            ]
+            for column in bingo_card.card
+        ]
     )
