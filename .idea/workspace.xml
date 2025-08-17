@@ -6,13 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b68ef968-26cf-49be-aca2-945aee04b2ea" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper/response_mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/mapper/response_mapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/card.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/card.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/websocket.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/websocket.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/play.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/play.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
