@@ -44,7 +44,7 @@ class PlayService:
     async def send(self, player_id: str, message: WebSocketMessage):
         await self.connections[player_id].send_json(message)
 
-    async def handle_message(self, message):
+    async def handle_message(self, message: WebSocketMessage):
         pass
 
     async def __start_game(self, room_id: str):
