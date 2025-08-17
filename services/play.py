@@ -21,6 +21,7 @@ class PlayService:
         self.connections[player_id] = websocket
 
         await self.send(
+            player_id,
             WebSocketMessage(
                 type="card",
                 message=map_bingo_card_to_response(BingoCardFactory.create())
