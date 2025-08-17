@@ -10,7 +10,7 @@ class Room:
         self.room_id: str = room_id
         self.name: str = name
         self.capacity: int = capacity
-        self.players: Dict[str, Player] = {}
+        self.players: Dict[str, Player] = {} # player_id -> Player
         self.caller: Caller = Caller()
         self.is_started: bool = False
 

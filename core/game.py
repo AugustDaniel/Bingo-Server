@@ -9,10 +9,10 @@ import uuid
 
 class Game:
     def __init__(self):
-        self.rooms: Dict[str, Room] = {}
+        self.rooms: Dict[str, Room] = {} # room_id -> Room
         self.max_capacity: int = 20
         self.max_rooms: int = 20
-        self.players: Dict[str, Player] = {}
+        self.players: Dict[str, Player] = {} # player_id -> Player
 
     def create_new_room(self, name: str = "room", capacity: int | None = None) -> Room:
         if len(self.rooms) >= self.max_rooms:
