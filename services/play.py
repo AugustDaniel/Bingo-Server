@@ -1,6 +1,7 @@
 import asyncio
 
 from fastapi import WebSocket, WebSocketDisconnect
+from pydantic import ValidationError
 
 from core import Game, BingoCardFactory
 from exceptions import InvalidWebSocketJoin
@@ -19,6 +20,8 @@ class PlayService:
 
         await websocket.accept()
         self.connections[player_id] = websocket
+
+        asyncio.create_task(self.__listen_for_messages(websocket))
 
         await self.send(
             player_id,
@@ -41,6 +44,9 @@ class PlayService:
     async def send(self, player_id: str, message: WebSocketMessage):
         await self.connections[player_id].send_json(message)
 
+    async def handle_message(self, message):
+        pass
+
     async def __start_game(self, room_id: str):
         self.game.rooms[room_id].is_started = True
         self.__draw_numbers(room_id)
@@ -61,3 +67,19 @@ class PlayService:
 
     def __remove_room(self, room_id: str):
         pass
+
+    async def __listen_for_messages(self, websocket: WebSocket):
+        try:
+            while True:
+                data = await websocket.receive_json()
+
+                try:
+                    await self.handle_message(WebSocketMessage(**data))
+                except ValidationError as e:
+                    await websocket.send_json(WebSocketMessage(
+                        type="error",
+                        message="Invalid message received",
+                    ))
+        except WebSocketDisconnect:
+            pass
+            # service.disconnect(websocket)
