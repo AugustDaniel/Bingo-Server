@@ -13,19 +13,25 @@ class Connection:
     def __init__(self, player: Player, room: Room, websocket: WebSocket):
         self.player: Player = player
         self.room: Room = room
-        self.websocket: WebSocket = websocket
+        self.__websocket: WebSocket = websocket
+
+    async def send(self, message: WebSocketMessage):
+        await self.__websocket.send_json(message)
+
+    async def receive(self) -> WebSocketMessage:
+        data = await self.__websocket.receive_json()
+        return WebSocketMessage(**data)
+
+    async def close(self):
+        await self.__websocket.close()
 
 
 async def broadcast(connections: list[Connection], message: WebSocketMessage):
     for connection in connections:
         try:
-            await send(connection, message)
+            await connection.send(message)
         except WebSocketDisconnect as e:
             pass  # TODO maybe make separate connection manager class
-
-
-async def send(connection: Connection, message: WebSocketMessage):
-    await connection.websocket.send_json(message)
 
 
 class PlayService:
@@ -49,8 +55,7 @@ class PlayService:
 
         asyncio.create_task(self.__listen_for_messages(connection))
 
-        await send(
-            connection,
+        await connection.send(
             WebSocketMessage(
                 type="card",
                 message=map_bingo_card_to_response(BingoCardFactory.create())
@@ -95,12 +100,10 @@ class PlayService:
     async def __listen_for_messages(self, connection: Connection):
         try:
             while True:
-                data = await connection.websocket.receive_json()
-
                 try:
-                    await self.handle_message(WebSocketMessage(**data))
+                    data = await connection.receive()
                 except ValidationError as e:
-                    await connection.websocket.send_json(WebSocketMessage(
+                    await connection.send(WebSocketMessage(
                         type="error",
                         message="Invalid message received",
                     ))
