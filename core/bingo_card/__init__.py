@@ -1,4 +1,4 @@
-from .card import Card as BingoCard
-from .factory import CardFactory as BingoCardFactory
+from .card import BingoCard
+from .factory import BingoCardFactory
 
 __all__ = ["BingoCard", "BingoCardFactory"]

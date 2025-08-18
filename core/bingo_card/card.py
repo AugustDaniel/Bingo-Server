@@ -1,10 +1,10 @@
 from typing import List
 
-from core.bingo_card.cell import CardCell
+from core.bingo_card.cell import BingoCardCell
 
 
-class Card:
-    card = List[List[CardCell]]
+class BingoCard:
+    card = List[List[BingoCardCell]]
 
-    def __init__(self, card: List[List[CardCell]]):
-        self.card: List[List[CardCell]] = card
+    def __init__(self, card: List[List[BingoCardCell]]):
+        self.card: List[List[BingoCardCell]] = card
