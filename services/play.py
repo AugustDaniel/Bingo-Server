@@ -81,7 +81,7 @@ class PlayService:
                 pass
 
     async def handle_bingo(self, message: WebSocketMessage, connection: Connection):
-        bingo = connection.room.check_bingo(message.message)
+        bingo = connection.room.check_bingo(connection.player)
 
         if bingo:
             room_connections = [con for con in self.connections if con.room.room_id == connection.room.room_id]

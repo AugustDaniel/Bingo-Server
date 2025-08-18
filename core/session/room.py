@@ -1,9 +1,16 @@
+from enum import Enum
 from typing import Dict
 
 from core.player import Player
 from core.session.caller import Caller
 from exceptions import RoomFull, InvalidPlayer
-from ..bingo_card import BingoCardFactory
+from ..bingo_card import BingoCardFactory, BingoCard
+
+
+class BingoProgress(Enum):
+    LINE = "line"
+    DOUBLE_LINE = "double_line"
+    FULL_CARD = "full_card"
 
 
 class Room:
@@ -14,6 +21,7 @@ class Room:
         self.players: Dict[str, Player] = {}  # player_id -> Player
         self.caller: Caller = Caller()
         self.is_started: bool = False
+        self.progress: BingoProgress = BingoProgress.LINE
 
     def join(self, player: Player) -> None:
         if self.is_full():
@@ -40,6 +48,10 @@ class Room:
     def is_over(self) -> bool:
         return self.caller.is_done()
 
-    def check_bingo(self, card) -> bool:
-        # TODO check if player has not gotten bingo before
+    def check_bingo(self, player: Player) -> bool:
+        # draws = self.caller.draws
+        # card: BingoCard = player.cards[0].card
+        #
+        # full_rows = sum(all(cell.scratched for cell in row) for row in card.card)
+
         return False

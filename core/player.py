@@ -1,4 +1,4 @@
-from bingo_card import BingoCard
+from .bingo_card import BingoCard
 
 
 class Player:
