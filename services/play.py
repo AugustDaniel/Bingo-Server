@@ -65,7 +65,7 @@ class PlayService:
 
         match msg_type:
             case "bingo":
-
+                pass
             case "leave":
                 pass
             case _:
