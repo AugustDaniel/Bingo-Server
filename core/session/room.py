@@ -3,6 +3,7 @@ from typing import Dict
 from core.player import Player
 from core.session.caller import Caller
 from exceptions import RoomFull, InvalidPlayer
+from ..bingo_card import BingoCardFactory
 
 
 class Room:
@@ -22,6 +23,7 @@ class Room:
             raise InvalidPlayer("Player is already in the room")
 
         self.players[player.id] = player
+        player.cards.append(BingoCardFactory.create())
 
     def leave(self, player: Player) -> None:
         if player.id not in self.players:
