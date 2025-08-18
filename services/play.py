@@ -3,7 +3,7 @@ import asyncio
 from fastapi import WebSocket, WebSocketDisconnect
 from pydantic import ValidationError
 
-from core import Game, BingoCardFactory, Room, Player
+from core import Game, Room, Player
 from exceptions import InvalidWebSocketJoin
 from mapper import map_bingo_card_to_response
 from models import WebSocketMessage
@@ -58,7 +58,7 @@ class PlayService:
         await connection.send(
             WebSocketMessage(
                 type="card",
-                message=map_bingo_card_to_response(BingoCardFactory.create())
+                message=map_bingo_card_to_response(connection.player.cards[0]),
             )
         )
 
