@@ -37,7 +37,7 @@ async def broadcast(connections: list[Connection], message: WebSocketMessage):
 class PlayService:
     def __init__(self, game: Game):
         self.game = game
-        self.connections: dict[str, Connection] = {}  # player_id -> connection
+        self.connections: list[Connection] = []
 
     async def connect(self, websocket: WebSocket, room_id: str, player_id: str) -> None:
         if room_id not in self.game.rooms or player_id not in self.game.rooms[room_id].players:
@@ -51,7 +51,7 @@ class PlayService:
             room=joined_room
         )
 
-        self.connections[player_id] = connection
+        self.connections.append(connection)
 
         asyncio.create_task(self.__listen_for_messages(connection))
 
@@ -65,16 +65,35 @@ class PlayService:
         if not self.game.rooms[room_id].is_started:
             asyncio.create_task(self.__start_game(room_id))
 
-    async def handle_message(self, message: WebSocketMessage):
+    async def disconnect(self, connection: Connection):
+        await connection.close()
+        self.connections.remove(connection)
+
+    async def handle_message(self, message: WebSocketMessage, connection: Connection):
         msg_type = message.type
 
         match msg_type:
             case "bingo":
-                pass
+                await self.handle_bingo(message, connection)
             case "leave":
-                pass
+                await self.disconnect(connection)
             case _:
                 pass
+
+    async def handle_bingo(self, message: WebSocketMessage, connection: Connection):
+        bingo = connection.room.check_bingo(message.message)
+
+        if bingo:
+            room_connections = [con for con in self.connections if con.room.room_id == connection.room.room_id]
+            await broadcast(room_connections, WebSocketMessage(
+                type="bingo",
+                message=connection.player.name
+            ))
+        else:
+            await connection.send(WebSocketMessage(
+                type="invalid_bingo",
+                message="Invalid bingo"
+            ))
 
     async def __start_game(self, room_id: str):
         self.game.rooms[room_id].is_started = True
@@ -101,12 +120,12 @@ class PlayService:
         try:
             while True:
                 try:
-                    data = await connection.receive()
+                    message = await connection.receive()
+                    await self.handle_message(message, connection)
                 except ValidationError as e:
                     await connection.send(WebSocketMessage(
                         type="error",
                         message="Invalid message received",
                     ))
         except WebSocketDisconnect:
-            pass
-            # service.disconnect(websocket)
+            await self.disconnect(connection)
