@@ -46,12 +46,41 @@ class Room:
         return self.caller.draw()
 
     def is_over(self) -> bool:
-        return self.caller.is_done()
+        return self.caller.is_done
 
     def check_bingo(self, player: Player) -> bool:
         draws = self.caller.draws
-        card: BingoCard = player.cards[0]
+        bingo_card: BingoCard = player.cards[0]
 
-        full_rows = sum(all(cell.scratched and cell.content in draws for cell in row) for row in card.card)
+        full_columns = sum(
+            all(
+                cell.scratched and cell.content in draws
+                for cell in row
+            )
+            for row in bingo_card.card
+        )
 
+        full_rows = sum(
+            all(
+                column[index].scratched and column[index].content in draws
+                for column in bingo_card.card
+            )
+            for index in range(len(bingo_card.card))
+        )
+
+        total = full_columns + full_rows
+
+        match self.progress:
+            case BingoProgress.FULL_CARD:
+                if total >= 5:
+                    self.caller.is_done = True
+                    return  True
+            case BingoProgress.DOUBLE_LINE:
+                if total >= 2:
+                    self.progress = BingoProgress.FULL_CARD
+                    return True
+            case BingoProgress.LINE:
+                if total >= 1:
+                    self.progress = BingoProgress.DOUBLE_LINE
+                    return True
         return False
