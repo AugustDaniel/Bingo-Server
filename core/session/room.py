@@ -49,9 +49,9 @@ class Room:
         return self.caller.is_done()
 
     def check_bingo(self, player: Player) -> bool:
-        # draws = self.caller.draws
-        # card: BingoCard = player.cards[0].card
-        #
-        # full_rows = sum(all(cell.scratched for cell in row) for row in card.card)
+        draws = self.caller.draws
+        card: BingoCard = player.cards[0]
+
+        full_rows = sum(all(cell.scratched and cell.content in draws for cell in row) for row in card.card)
 
         return False
