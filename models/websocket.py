@@ -1,3 +1,5 @@
+from typing import Literal
+
 from pydantic import BaseModel, Field
 from .card import BingoCardModel
 
@@ -8,40 +10,25 @@ class WebSocketMessage(BaseModel):
 
 
 class InvalidBingoMessage(WebSocketMessage):
-    def __init__(self, message: str):
-        super().__init__(
-            type="invalid_bingo",
-            message=message
-        )
+    type: Literal["invalid_bingo"] = "invalid_bingo"
+    message: str
 
 
 class ValidBingoMessage(WebSocketMessage):
-    def __init__(self, message: str):
-        super().__init__(
-            type="valid_bingo",
-            message=message
-        )
+    type: Literal["valid_bingo"] = "valid_bingo"
+    message: str
 
 
 class NewDrawMessage(WebSocketMessage):
-    def __init__(self, message: str):
-        super().__init__(
-            type="draw",
-            message=message
-        )
+    type: Literal["draw"] = "draw"
+    message: str
 
 
 class ErrorMessage(WebSocketMessage):
-    def __init__(self, message: str):
-        super().__init__(
-            type="error",
-            message=message
-        )
+    type: Literal["error"] = "error"
+    message: str
 
 
 class BingoCardMessage(WebSocketMessage):
-    def __init__(self, message: BingoCardModel):
-        super().__init__(
-            type="card",
-            message=message
-        )
+    type: Literal["card"] = "card"
+    message: BingoCardModel
