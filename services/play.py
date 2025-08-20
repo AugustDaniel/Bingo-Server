@@ -26,14 +26,6 @@ class Connection:
         await self.__websocket.close()
 
 
-async def broadcast(connections: list[Connection], message: WebSocketMessage):
-    for connection in connections:
-        try:
-            await connection.send(message)
-        except WebSocketDisconnect as e:
-            pass  # TODO maybe make separate connection manager class
-
-
 class PlayService:
     def __init__(self, game: Game):
         self.game = game
@@ -62,7 +54,7 @@ class PlayService:
         )
 
         if not self.game.rooms[room_id].is_started:
-            asyncio.create_task(self.__start_game(room_id))
+            asyncio.create_task(self.__start_room(joined_room))
 
     async def disconnect(self, connection: Connection):
         await connection.close()
@@ -83,8 +75,7 @@ class PlayService:
         bingo = connection.room.check_bingo(connection.player)
 
         if bingo:
-            room_connections = [con for con in self.connections if con.room.room_id == connection.room.room_id]
-            await broadcast(room_connections, ValidBingoMessage(
+            await self.broadcast(connection.room, ValidBingoMessage(
                 message=connection.player.name
             ))
         else:
@@ -92,25 +83,44 @@ class PlayService:
                 message="Invalid bingo"
             ))
 
-    async def __start_game(self, room_id: str):
-        self.game.rooms[room_id].is_started = True
-        self.__draw_numbers(room_id)
+    async def __start_room(self, room: Room):
+        room.is_started = True
+        await self.__draw_numbers(room)
 
-    def __draw_numbers(self, room_id):
-        room: Room = self.game.rooms[room_id]
+    async def __close_room(self, room: Room):
+        await self.broadcast(room, RoomOverMessage(
+            message=room.room_id
+        ))
+        room.is_started = False
+        del self.game.rooms[room.room_id]
+        await self.__close_connections(room)
 
+    async def __draw_numbers(self, room: Room):
         while not room.is_over() or room.players:
             message = NewDrawMessage(
                 message=str(room.draw_number())
             )
 
-            broadcast(room_id, message)
-            asyncio.sleep(5)
+            await self.broadcast(room, message)
+            await asyncio.sleep(5)
 
-        self.__remove_room(room_id)
+        await self.__close_room(room)
 
-    def __remove_room(self, room_id: str):
-        pass
+    async def __close_connections(self, room: Room):
+        connections = self.get_room_connections(room)
+        for connection in connections:
+            await self.disconnect(connection)
+
+    def get_room_connections(self, room: Room) -> list[Connection]:
+        return [con for con in self.connections if con.room.room_id == room.room_id]
+
+    async def broadcast(self, room: Room, message: WebSocketMessage):
+        room_connections = self.get_room_connections(room)
+        for connection in room_connections:
+            try:
+                await connection.send(message)
+            except WebSocketDisconnect as e:
+                pass  # TODO maybe make separate connection manager class
 
     async def __listen_for_messages(self, connection: Connection):
         try:
