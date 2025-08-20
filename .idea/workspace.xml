@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b68ef968-26cf-49be-aca2-945aee04b2ea" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/models/websocket.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/websocket.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/play.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/play.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -119,7 +118,7 @@
       <workItem from="1755539834276" duration="601000" />
       <workItem from="1755554084159" duration="3535000" />
       <workItem from="1755621226044" duration="611000" />
-      <workItem from="1755726906831" duration="2976000" />
+      <workItem from="1755726906831" duration="3313000" />
     </task>
     <servers />
   </component>

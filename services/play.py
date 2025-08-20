@@ -92,11 +92,11 @@ class PlayService:
             message=room.room_id
         ))
         room.is_started = False
-        del self.game.rooms[room.room_id]
         await self.__close_connections(room)
+        del self.game.rooms[room.room_id]
 
     async def __draw_numbers(self, room: Room):
-        while not room.is_over() or room.players:
+        while not room.is_over() and room.players:
             message = NewDrawMessage(
                 message=str(room.draw_number())
             )
@@ -120,7 +120,7 @@ class PlayService:
             try:
                 await connection.send(message)
             except WebSocketDisconnect as e:
-                pass  # TODO maybe make separate connection manager class
+                await self.disconnect(connection)
 
     async def __listen_for_messages(self, connection: Connection):
         try:
