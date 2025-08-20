@@ -26,10 +26,39 @@ class Connection:
         await self.__websocket.close()
 
 
+class ConnectionManager:
+    def __init__(self):
+        self.__connections: list[Connection] = []
+        self.__lock = asyncio.Lock()
+
+    async def add_connection(self, connection: Connection):
+        async with self.__lock:
+            self.__connections.append(connection)
+
+    async def remove_connection(self, connection: Connection):
+        async with self.__lock:
+            try:
+                self.__connections.remove(connection)
+            except ValueError:
+                pass
+
+    async def get_connections(self) -> list[Connection]:
+        async with self.__lock:
+            return list(self.__connections)
+
+    async def broadcast(self, message: WebSocketMessage):
+        connections = await self.get_connections()
+
+        await asyncio.gather(
+            *(c.send(message) for c in connections),
+            return_exceptions=True
+        )
+
+
 class PlayService:
     def __init__(self, game: Game):
         self.game = game
-        self.connections: list[Connection] = []
+        self.connection_manager: dict[Room, ConnectionManager] = {}
 
     async def connect(self, websocket: WebSocket, room_id: str, player_id: str) -> None:
         if room_id not in self.game.rooms or player_id not in self.game.rooms[room_id].players:
@@ -43,7 +72,9 @@ class PlayService:
             room=joined_room
         )
 
-        self.connections.append(connection)
+        await (self.connection_manager
+               .setdefault(joined_room, ConnectionManager())
+               .add_connection(connection))
 
         asyncio.create_task(self.__listen_for_messages(connection))
 
@@ -57,8 +88,11 @@ class PlayService:
             asyncio.create_task(self.__start_room(joined_room))
 
     async def disconnect(self, connection: Connection):
-        await connection.close()
-        self.connections.remove(connection)
+        try:
+            await connection.close()
+            await self.connection_manager[connection.room].remove_connection(connection)
+        except KeyError:
+            pass
 
     async def handle_message(self, message: WebSocketMessage, connection: Connection):
         msg_type = message.type
@@ -75,7 +109,7 @@ class PlayService:
         bingo = connection.room.check_bingo(connection.player)
 
         if bingo:
-            await self.broadcast(connection.room, ValidBingoMessage(
+            await self.connection_manager[connection.room].broadcast(ValidBingoMessage(
                 message=connection.player.name
             ))
         else:
@@ -88,7 +122,7 @@ class PlayService:
         await self.__draw_numbers(room)
 
     async def __close_room(self, room: Room):
-        await self.broadcast(room, RoomOverMessage(
+        await self.connection_manager[room].broadcast(RoomOverMessage(
             message=room.room_id
         ))
         room.is_started = False
@@ -101,26 +135,14 @@ class PlayService:
                 message=str(room.draw_number())
             )
 
-            await self.broadcast(room, message)
+            await self.connection_manager[room].broadcast(message)
             await asyncio.sleep(5)
 
         await self.__close_room(room)
 
     async def __close_connections(self, room: Room):
-        connections = self.get_room_connections(room)
-        for connection in connections:
+        for connection in await self.connection_manager[room].get_connections():
             await self.disconnect(connection)
-
-    def get_room_connections(self, room: Room) -> list[Connection]:
-        return [con for con in self.connections if con.room.room_id == room.room_id]
-
-    async def broadcast(self, room: Room, message: WebSocketMessage):
-        room_connections = self.get_room_connections(room)
-        for connection in room_connections:
-            try:
-                await connection.send(message)
-            except WebSocketDisconnect as e:
-                await self.disconnect(connection)
 
     async def __listen_for_messages(self, connection: Connection):
         try:
