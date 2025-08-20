@@ -11,24 +11,24 @@ class WebSocketMessage(BaseModel):
 
 class InvalidBingoMessage(WebSocketMessage):
     type: Literal["invalid_bingo"] = "invalid_bingo"
-    message: str
+    message: str # invalid bingo message
 
 
 class ValidBingoMessage(WebSocketMessage):
     type: Literal["valid_bingo"] = "valid_bingo"
-    message: str
+    message: str #contains name of the player who has gotten a bingo
 
 
 class NewDrawMessage(WebSocketMessage):
     type: Literal["draw"] = "draw"
-    message: str
+    message: str # new draw in the room
 
 
 class ErrorMessage(WebSocketMessage):
     type: Literal["error"] = "error"
-    message: str
+    message: str # error message
 
 
 class BingoCardMessage(WebSocketMessage):
     type: Literal["card"] = "card"
-    message: BingoCardModel
+    message: BingoCardModel # bingo card
