@@ -6,7 +6,7 @@ from pydantic import ValidationError
 from core import Game, Room, Player
 from exceptions import InvalidWebSocketJoin
 from mapper import map_bingo_card_to_response
-from models import WebSocketMessage
+from models.websocket import *
 
 
 class Connection:
@@ -56,8 +56,7 @@ class PlayService:
         asyncio.create_task(self.__listen_for_messages(connection))
 
         await connection.send(
-            WebSocketMessage(
-                type="card",
+            BingoCardMessage(
                 message=map_bingo_card_to_response(connection.player.cards[0]),
             )
         )
@@ -74,24 +73,22 @@ class PlayService:
 
         match msg_type:
             case "bingo":
-                await self.handle_bingo(message, connection)
+                await self.handle_bingo(connection)
             case "leave":
                 await self.disconnect(connection)
             case _:
                 pass
 
-    async def handle_bingo(self, message: WebSocketMessage, connection: Connection):
+    async def handle_bingo(self, connection: Connection):
         bingo = connection.room.check_bingo(connection.player)
 
         if bingo:
             room_connections = [con for con in self.connections if con.room.room_id == connection.room.room_id]
-            await broadcast(room_connections, WebSocketMessage(
-                type="bingo",
+            await broadcast(room_connections, ValidBingoMessage(
                 message=connection.player.name
             ))
         else:
-            await connection.send(WebSocketMessage(
-                type="invalid_bingo",
+            await connection.send(InvalidBingoMessage(
                 message="Invalid bingo"
             ))
 
@@ -103,8 +100,7 @@ class PlayService:
         room: Room = self.game.rooms[room_id]
 
         while not room.is_over() or room.players:
-            message = WebSocketMessage(
-                type="draw",
+            message = NewDrawMessage(
                 message=str(room.draw_number())
             )
 
@@ -123,8 +119,7 @@ class PlayService:
                     message = await connection.receive()
                     await self.handle_message(message, connection)
                 except ValidationError as e:
-                    await connection.send(WebSocketMessage(
-                        type="error",
+                    await connection.send(ErrorMessage(
                         message="Invalid message received",
                     ))
         except WebSocketDisconnect:
