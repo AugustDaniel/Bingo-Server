@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b68ef968-26cf-49be-aca2-945aee04b2ea" name="Changes" comment="" />
+    <list default="true" id="b68ef968-26cf-49be-aca2-945aee04b2ea" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,6 +58,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\user\gitrepos\Bingo-Server\services\play" />
       <recent name="C:\Users\user\PycharmProjects\Bingo\core\session" />
       <recent name="C:\Users\user\PycharmProjects\Bingo\core\bingo_card" />
     </key>
@@ -116,7 +119,8 @@
       <workItem from="1755539834276" duration="601000" />
       <workItem from="1755554084159" duration="3535000" />
       <workItem from="1755621226044" duration="611000" />
-      <workItem from="1755726906831" duration="5339000" />
+      <workItem from="1755726906831" duration="5709000" />
+      <workItem from="1755807185933" duration="624000" />
     </task>
     <servers />
   </component>

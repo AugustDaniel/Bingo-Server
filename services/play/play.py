@@ -13,7 +13,7 @@ from .connection import ConnectionManager, Connection
 class PlayService:
     def __init__(self, game: Game):
         self.game = game
-        self.connection_manager: dict[Room, ConnectionManager] = {}
+        self.connection_manager: dict[str, ConnectionManager] = {} # room_id -> connection manager
 
     async def connect(self, websocket: WebSocket, room_id: str, player_id: str) -> None:
         if room_id not in self.game.rooms or player_id not in self.game.rooms[room_id].players:
@@ -28,7 +28,7 @@ class PlayService:
         )
 
         await (self.connection_manager
-               .setdefault(joined_room, ConnectionManager())
+               .setdefault(joined_room.room_id, ConnectionManager())
                .add_connection(connection))
 
         asyncio.create_task(self.__listen_for_messages(connection))
@@ -45,7 +45,7 @@ class PlayService:
     async def disconnect(self, connection: Connection):
         try:
             await connection.close()
-            await self.connection_manager[connection.room].remove_connection(connection)
+            await self.connection_manager[connection.room.room_id].remove_connection(connection)
         except KeyError:
             pass
 
@@ -64,7 +64,7 @@ class PlayService:
         bingo = connection.room.check_bingo(connection.player)
 
         if bingo:
-            await self.connection_manager[connection.room].broadcast(ValidBingoMessage(
+            await self.connection_manager[connection.room.room_id].broadcast(ValidBingoMessage(
                 message=connection.player.name
             ))
         else:
@@ -77,7 +77,7 @@ class PlayService:
         await self.__draw_numbers(room)
 
     async def __close_room(self, room: Room):
-        await self.connection_manager[room].broadcast(RoomOverMessage(
+        await self.connection_manager[room.room_id].broadcast(RoomOverMessage(
             message=room.room_id
         ))
         room.is_started = False
@@ -90,13 +90,13 @@ class PlayService:
                 message=str(room.draw_number())
             )
 
-            await self.connection_manager[room].broadcast(message)
+            await self.connection_manager[room.room_id].broadcast(message)
             await asyncio.sleep(5)
 
         await self.__close_room(room)
 
     async def __close_connections(self, room: Room):
-        for connection in await self.connection_manager[room].get_connections():
+        for connection in await self.connection_manager[room.room_id].get_connections():
             await self.disconnect(connection)
 
     async def __listen_for_messages(self, connection: Connection):
