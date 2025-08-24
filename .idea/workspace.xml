@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b68ef968-26cf-49be-aca2-945aee04b2ea" name="Changes" comment="" />
+    <list default="true" id="b68ef968-26cf-49be-aca2-945aee04b2ea" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +17,7 @@
       <list>
         <option value="FastAPI main" />
         <option value="FastAPI test_main" />
+        <option value="Dockerfile" />
         <option value="Python Script" />
       </list>
     </option>
@@ -36,6 +39,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "FastAPI.Bingo.executor": "Run",
+    "FastAPI.Unnamed.executor": "Run",
     "HTTP Request.test_main | #3.executor": "Run",
     "HTTP Request.test_main | #4.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
@@ -56,25 +60,27 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\user\PycharmProjects\Bingo\app" />
       <recent name="C:\Users\user\gitrepos\Bingo-Server\services\play" />
       <recent name="C:\Users\user\PycharmProjects\Bingo\core\session" />
       <recent name="C:\Users\user\PycharmProjects\Bingo\core\bingo_card" />
     </key>
   </component>
-  <component name="RunManager" selected="FastAPI.Bingo">
+  <component name="RunManager" selected="FastAPI.app">
     <configuration name="test_main | #3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test_main.http" executionIdentifier="#3" index="3" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="test_main | #4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test_main.http" executionIdentifier="#4" index="4" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="Bingo" type="Python.FastAPI">
-      <option name="file" value="$PROJECT_DIR$/main.py" />
+    <configuration name="app" type="Python.FastAPI">
+      <option name="file" value="C:\Users\user\PycharmProjects\Bingo\app\main.py" />
       <module name="Bingo" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="$PROJECT_DIR$/.venv/Scripts/python.exe" />
+      <option name="SDK_NAME" value="Python 3.13 (Bingo)" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -83,6 +89,11 @@
       <option name="launchJavascriptDebuger" value="false" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="FastAPI.app" />
+      <item itemvalue="HTTP Request.test_main | #3" />
+      <item itemvalue="HTTP Request.test_main | #4" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="HTTP Request.test_main | #4" />
@@ -126,7 +137,8 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Bingo_Server$Bingo.coverage" NAME="Bingo Coverage Results" MODIFIED="1755732226250" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Bingo$Bingo.coverage" NAME="Bingo Coverage Results" MODIFIED="1755444610593" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Bingo_Server$Bingo.coverage" NAME="Bingo Coverage Results" MODIFIED="1755732226250" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Bingo$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1756037325398" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>
