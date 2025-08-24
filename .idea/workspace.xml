@@ -17,8 +17,8 @@
       <list>
         <option value="FastAPI main" />
         <option value="FastAPI test_main" />
-        <option value="Dockerfile" />
         <option value="Python Script" />
+        <option value="Dockerfile" />
       </list>
     </option>
   </component>
