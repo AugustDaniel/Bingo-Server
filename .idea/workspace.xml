@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b68ef968-26cf-49be-aca2-945aee04b2ea" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +38,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Docker.compose.yaml: Compose Deployment.executor": "Run",
     "FastAPI.Bingo.executor": "Run",
     "FastAPI.Unnamed.executor": "Run",
     "HTTP Request.test_main | #3.executor": "Run",
@@ -68,7 +67,7 @@
       <recent name="C:\Users\user\PycharmProjects\Bingo\core\bingo_card" />
     </key>
   </component>
-  <component name="RunManager" selected="FastAPI.app">
+  <component name="RunManager" selected="Docker.compose.yaml: Compose Deployment">
     <configuration name="test_main | #3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test_main.http" executionIdentifier="#3" index="3" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -91,13 +90,27 @@
       <option name="launchJavascriptDebuger" value="false" />
       <method v="2" />
     </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml" />
+      <method v="2" />
+    </configuration>
+    <configuration name="compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <list>
+      <item itemvalue="Docker.compose.yaml: Compose Deployment" />
       <item itemvalue="FastAPI.app" />
       <item itemvalue="HTTP Request.test_main | #3" />
       <item itemvalue="HTTP Request.test_main | #4" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.compose.yaml: Compose Deployment" />
         <item itemvalue="HTTP Request.test_main | #4" />
         <item itemvalue="HTTP Request.test_main | #3" />
       </list>
