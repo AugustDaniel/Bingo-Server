@@ -1,6 +1,6 @@
 from typing import List
 
-from core.bingo_card.cell import BingoCardCell
+from app.core.bingo_card.cell import BingoCardCell
 
 
 class BingoCard:

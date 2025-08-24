@@ -1,6 +1,6 @@
-from core.game import Game
-from models import *
-from mapper import *
+from app.core.game import Game
+from app.models import *
+from app.mapper import *
 
 
 class GameService:

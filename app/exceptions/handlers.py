@@ -1,7 +1,7 @@
 from fastapi import Request
 from starlette.responses import JSONResponse
 
-from exceptions import *
+from app.exceptions import *
 
 
 def capacity_to_high_handler(request: Request, exception: Exception):

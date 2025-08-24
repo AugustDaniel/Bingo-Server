@@ -1,5 +1,5 @@
-from core import Game
-from services import GameService, PlayService
+from app.core import Game
+from app.services import GameService, PlayService
 
 __game: Game = Game()
 __game_service: GameService = GameService(__game)

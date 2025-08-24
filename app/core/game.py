@@ -1,8 +1,8 @@
 from typing import Dict
 
 from .player import Player
-from core.session.room import Room
-from exceptions import MaxRoomsReached, CapacityTooHigh, RoomNotFound, InvalidPlayer
+from app.core.session.room import Room
+from app.exceptions import MaxRoomsReached, CapacityTooHigh, RoomNotFound, InvalidPlayer
 
 import uuid
 

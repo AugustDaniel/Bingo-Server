@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends
-from dependencies import get_game_service
-from models import GameModel, RoomModel, RoomPostModel
-from models.player import PlayerPostModel
-from models import RoomJoinResponse
-from services import GameService
+from app.dependencies import get_game_service
+from app.models import GameModel, RoomModel, RoomPostModel
+from app.models.player import PlayerPostModel
+from app.models import RoomJoinResponse
+from app.services import GameService
 
 router = APIRouter(
     prefix="/game",

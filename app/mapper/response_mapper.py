@@ -1,5 +1,5 @@
-from core import Room, Game, Player, BingoCard
-from models import RoomModel, GameModel, PlayerModel, BingoCardModel, BingoCardCellModel
+from app.core import Room, Game, Player, BingoCard
+from app.models import RoomModel, GameModel, PlayerModel, BingoCardModel, BingoCardCellModel
 
 
 def map_room_to_response(room: Room) -> RoomModel:

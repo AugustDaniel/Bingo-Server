@@ -1,7 +1,8 @@
 from fastapi import FastAPI
 
-from api import game_routes, play_routes
-from exceptions import exception_handlers
+from app.api import game_routes
+from app.api import play_routes
+from app.exceptions import exception_handlers
 
 app = FastAPI(exception_handlers=exception_handlers)
 

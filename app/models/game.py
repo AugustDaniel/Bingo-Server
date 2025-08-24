@@ -2,7 +2,7 @@ from typing import Dict
 
 from pydantic import BaseModel, Field
 
-from models import RoomModel
+from app.models import RoomModel
 
 
 class GameModel(BaseModel):

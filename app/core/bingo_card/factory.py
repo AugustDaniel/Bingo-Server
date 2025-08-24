@@ -1,7 +1,7 @@
 import random
 
-from core.bingo_card.card import BingoCard
-from core.bingo_card.cell import BingoCardCell
+from app.core.bingo_card.card import BingoCard
+from app.core.bingo_card.cell import BingoCardCell
 
 
 class BingoCardFactory:

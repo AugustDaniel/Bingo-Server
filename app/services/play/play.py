@@ -3,10 +3,10 @@ import asyncio
 from fastapi import WebSocket, WebSocketDisconnect
 from pydantic import ValidationError
 
-from core import Game, Room
-from exceptions import InvalidWebSocketJoin
-from mapper import map_bingo_card_to_response
-from models.websocket import *
+from app.core import Game, Room
+from app.exceptions import InvalidWebSocketJoin
+from app.mapper import map_bingo_card_to_response
+from app.models.websocket import *
 from .connection import ConnectionManager, Connection
 
 

@@ -1,6 +1,6 @@
 from fastapi import APIRouter, WebSocket, Depends
-from dependencies import get_play_service
-from services import PlayService
+from app.dependencies import get_play_service
+from app.services import PlayService
 
 router = APIRouter(
     prefix="/play",

@@ -2,8 +2,8 @@ import asyncio
 
 from fastapi import WebSocket
 
-from core import Player, Room
-from models import WebSocketMessage
+from app.core import Player, Room
+from app.models import WebSocketMessage
 
 
 class Connection:

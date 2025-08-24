@@ -1,9 +1,9 @@
 from enum import Enum
 from typing import Dict
 
-from core.player import Player
-from core.session.caller import Caller
-from exceptions import RoomFull, InvalidPlayer
+from app.core.player import Player
+from app.core.session.caller import Caller
+from app.exceptions import RoomFull, InvalidPlayer
 from ..bingo_card import BingoCardFactory, BingoCard
 
 
