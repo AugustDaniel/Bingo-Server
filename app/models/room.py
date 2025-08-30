@@ -5,6 +5,7 @@ class RoomModel(BaseModel):
     room_id: str = Field(..., examples=["1112"])
     name: str = Field(..., examples=["Room1", "Room2"])
     capacity: int = Field(..., examples=[20])
+    player_count: int = Field(default=0)
     is_full: bool = Field(default=False, examples=[True, False])
 
 

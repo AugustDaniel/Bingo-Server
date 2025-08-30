@@ -6,6 +6,7 @@ def map_room_to_response(room: Room) -> RoomModel:
     return RoomModel(
         room_id=room.room_id,
         name=room.name,
+        player_count=len(room.players),
         capacity=room.capacity,
         is_full=room.is_full()
     )
