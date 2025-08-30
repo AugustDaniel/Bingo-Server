@@ -14,7 +14,7 @@ def map_room_to_response(room: Room) -> RoomModel:
 
 def map_game_to_response(game: Game) -> GameModel:
     return GameModel(
-        rooms={room: map_room_to_response(game.rooms[room]) for room in game.rooms},
+        rooms=[map_room_to_response(game.rooms[room]) for room in game.rooms],
         max_capacity=game.max_capacity,
         max_rooms=game.max_rooms,
     )
