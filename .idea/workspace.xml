@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b68ef968-26cf-49be-aca2-945aee04b2ea" name="Changes" comment="" />
+    <list default="true" id="b68ef968-26cf-49be-aca2-945aee04b2ea" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/play/connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/play/connection.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -176,7 +179,7 @@
       <workItem from="1756630711337" duration="2392000" />
       <workItem from="1756641786154" duration="1100000" />
       <workItem from="1756643686725" duration="43000" />
-      <workItem from="1756644287663" duration="1897000" />
+      <workItem from="1756644287663" duration="3556000" />
     </task>
     <servers />
   </component>

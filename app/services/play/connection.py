@@ -13,7 +13,7 @@ class Connection:
         self.__websocket: WebSocket = websocket
 
     async def send(self, message: WebSocketMessage):
-        await self.__websocket.send_json(message)
+        await self.__websocket.send_json(message.model_dump())
 
     async def receive(self) -> WebSocketMessage:
         data = await self.__websocket.receive_json()
