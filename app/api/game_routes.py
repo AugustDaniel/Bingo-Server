@@ -21,12 +21,12 @@ def create_room(room: RoomPostModel, service: GameService = Depends(get_game_ser
     return service.create_room(room)
 
 
-@router.delete("/rooms/{room_id}")
+@router.delete("/rooms/{room_id}", response_model=GameModel)
 def delete_room(room_id: str, service: GameService = Depends(get_game_service)):
     return service.delete_room(room_id)
 
 
-@router.post("/reset")
+@router.post("/reset", response_model=GameModel)
 def reset_game(service: GameService = Depends(get_game_service)):
     return service.reset_game()
 
