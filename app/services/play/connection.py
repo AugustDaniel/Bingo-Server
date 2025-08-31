@@ -20,7 +20,10 @@ class Connection:
         return WebSocketMessage(**data)
 
     async def close(self):
-        await self.__websocket.close()
+        try:
+            await self.__websocket.close()
+        except RuntimeError:
+            pass
 
 
 class ConnectionManager:
