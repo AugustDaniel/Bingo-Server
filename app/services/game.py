@@ -21,3 +21,8 @@ class GameService:
     def delete_room(self, room_id: str) -> GameModel:
         self.game.remove_room(self.game.rooms.get(room_id))
         return self.get_game()
+
+    def reset_game(self) -> GameModel:
+        for room in self.game.rooms.values():
+            self.game.remove_room(room)
+        return self.get_game()
