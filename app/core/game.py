@@ -36,6 +36,7 @@ class Game:
         if room and room.room_id in self.rooms:
             for player_id in self.rooms[room.room_id].players:
                 self.players.pop(player_id)
+            room.caller.is_done = True
             del self.rooms[room.room_id]
         else:
             raise RoomNotFound("Invalid room")
