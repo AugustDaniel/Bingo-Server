@@ -21,6 +21,11 @@ def create_room(room: RoomPostModel, service: GameService = Depends(get_game_ser
     return service.create_room(room)
 
 
+@router.delete("/rooms/{room_id}")
+def delete_room(room_id: str, service: GameService = Depends(get_game_service)):
+    return service.delete_room(room_id)
+
+
 @router.post("/rooms/{room_id}/players", response_model=RoomJoinResponse)
 def join_room(room_id: str, player_post: PlayerPostModel, service: GameService = Depends(get_game_service)):
     room, player = service.join_room(room_id, player_post)

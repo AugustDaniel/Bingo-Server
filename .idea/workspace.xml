@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b68ef968-26cf-49be-aca2-945aee04b2ea" name="Changes" comment="" />
+    <list default="true" id="b68ef968-26cf-49be-aca2-945aee04b2ea" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -103,10 +105,10 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Docker.compose.yaml: Compose Deployment" />
+      <item itemvalue="FastAPI.app" />
       <item itemvalue="HTTP Request.test_main | #3" />
       <item itemvalue="HTTP Request.test_main | #4" />
-      <item itemvalue="FastAPI.app" />
-      <item itemvalue="Docker.compose.yaml: Compose Deployment" />
     </list>
     <recent_temporary>
       <list>
@@ -147,6 +149,8 @@
       <workItem from="1755807185933" duration="624000" />
       <workItem from="1756562016610" duration="833000" />
       <workItem from="1756566614311" duration="1090000" />
+      <workItem from="1756568513144" duration="917000" />
+      <workItem from="1756630711337" duration="2392000" />
     </task>
     <servers />
   </component>

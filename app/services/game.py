@@ -17,3 +17,7 @@ class GameService:
         player = self.game.create_new_player(player.name)
         self.game.add_player_to_room(player, self.game.rooms.get(room_id))
         return map_room_to_response(self.game.rooms.get(room_id)), map_player_to_response(player)
+
+    def delete_room(self, room_id: str) -> GameModel:
+        self.game.remove_room(self.game.rooms.get(room_id))
+        return self.get_game()
