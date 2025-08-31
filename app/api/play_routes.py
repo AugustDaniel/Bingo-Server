@@ -9,6 +9,6 @@ router = APIRouter(
 
 
 @router.websocket("/ws/{room_id}")
-async def websocket_endpoint(websocket: WebSocket, room_id: str, player_id: str,
+async def websocket_endpoint(websocket: WebSocket, room_id: str,
                              service: PlayService = Depends(get_play_service)):
-    await service.connect(websocket, room_id, player_id)
+    await service.connect(websocket, room_id)

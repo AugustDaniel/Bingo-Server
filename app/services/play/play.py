@@ -15,11 +15,13 @@ class PlayService:
         self.game = game
         self.connection_manager: dict[str, ConnectionManager] = {} # room_id -> connection manager
 
-    async def connect(self, websocket: WebSocket, room_id: str, player_id: str) -> None:
+    async def connect(self, websocket: WebSocket, room_id: str) -> None:
+        await websocket.accept()
+        player_id = websocket.query_params.get('player_id')
+
         if room_id not in self.game.rooms or player_id not in self.game.rooms[room_id].players:
             raise InvalidWebSocketJoin("This websocket url is not valid")
 
-        await websocket.accept()
         joined_room: Room = self.game.rooms[room_id]
         connection = Connection(
             websocket=websocket,
