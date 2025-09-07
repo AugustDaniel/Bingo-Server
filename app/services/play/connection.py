@@ -19,6 +19,7 @@ class Connection:
     async def send(self, message: WebSocketMessage):
         async with self.__lock:
             try:
+                logger.debug(f"Sending message: {message}")
                 await asyncio.wait_for(
                     self.__websocket.send_json(message.model_dump()),
                     timeout=2

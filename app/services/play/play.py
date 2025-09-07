@@ -1,7 +1,7 @@
 import asyncio
 import logging
 
-from fastapi import WebSocket, WebSocketDisconnect
+from fastapi import WebSocket
 from pydantic import ValidationError
 
 from app.core import Game, Room
@@ -19,6 +19,7 @@ class PlayService:
         self.connection_manager: dict[str, ConnectionManager] = {}  # room_id -> connection manager
 
     async def connect(self, websocket: WebSocket, room_id: str) -> None:
+        logger.info(f"connect {room_id}")
         await websocket.accept()
         player_id = websocket.query_params.get('player_id')
 
@@ -38,11 +39,15 @@ class PlayService:
 
         asyncio.create_task(self.__listen_for_messages(connection))
 
-        await connection.send(
-            BingoCardMessage(
-                message=map_bingo_card_to_response(connection.player.cards[0]),
+        try:
+            await connection.send(
+                BingoCardMessage(
+                    message=map_bingo_card_to_response(connection.player.cards[0]),
+                )
             )
-        )
+        except:
+            await self.disconnect(connection)
+            return
 
         if not self.game.rooms[room_id].is_started:
             logger.info("creating room: " + room_id)
@@ -52,7 +57,9 @@ class PlayService:
         try:
             await connection.close()
             await self.connection_manager[connection.room.room_id].remove_connection(connection)
-        except KeyError:
+            del self.game.rooms[connection.room.room_id].players[connection.player.id]
+        except Exception as e:
+            logger.exception("unable to remove connection" + e)
             pass
 
     async def room_broadcast(self, room: Room, message: WebSocketMessage):
@@ -60,6 +67,7 @@ class PlayService:
 
         failed = report["failed"]
         for connection in failed:
+            logger.error(f"failed {connection.player.name}")
             await self.disconnect(connection)
 
     async def handle_message(self, message: WebSocketMessage, connection: Connection):
@@ -100,7 +108,7 @@ class PlayService:
     async def __draw_numbers(self, room: Room):
         logger.info("drawing numbers")
         while not room.is_over() and room.players:
-            logger.info("number drawn")
+            logger.info(f"number drawn {room.players.__len__()}")
             message = NewDrawMessage(
                 message=str(room.draw_number())
             )
@@ -124,5 +132,6 @@ class PlayService:
                     await connection.send(ErrorMessage(
                         message="Invalid message received",
                     ))
-        except WebSocketDisconnect:
+        except:
+            logger.info("disconnect")
             await self.disconnect(connection)
