@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b68ef968-26cf-49be-aca2-945aee04b2ea" name="Changes" comment="" />
+    <list default="true" id="b68ef968-26cf-49be-aca2-945aee04b2ea" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/game_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/game_routes.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,30 +42,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Docker.compose.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;FastAPI.Bingo.executor&quot;: &quot;Run&quot;,
-    &quot;FastAPI.Unnamed.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP Request.test_main | #3.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP Request.test_main | #4.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP Request.test_main | #5.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/user/gitrepos/Bingo-Server&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Docker.Unnamed.executor": "Run",
+    "Docker.compose.yaml: Compose Deployment.executor": "Run",
+    "FastAPI.Bingo.executor": "Run",
+    "FastAPI.Unnamed.executor": "Run",
+    "FastAPI.app.executor": "Run",
+    "HTTP Request.test_main | #3.executor": "Run",
+    "HTTP Request.test_main | #4.executor": "Run",
+    "HTTP Request.test_main | #5.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/user/gitrepos/Bingo-Server",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "terminal",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\user\PycharmProjects\Bingo\app" />
@@ -71,20 +76,7 @@
       <recent name="C:\Users\user\PycharmProjects\Bingo\core\bingo_card" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="configurationStatuses">
-      <map>
-        <entry key="HttpClient.HttpRequestRunConfigurationType">
-          <value>
-            <map>
-              <entry key="test_main | #5" value="STOPPED" />
-            </map>
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="RunManager" selected="Docker.compose.yaml: Compose Deployment">
+  <component name="RunManager" selected="Docker.Unnamed">
     <configuration name="test_main | #3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test_main.http" executionIdentifier="#3" index="3" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -95,12 +87,12 @@
       <method v="2" />
     </configuration>
     <configuration name="app" type="Python.FastAPI">
-      <option name="file" value="C:\Users\user\PycharmProjects\Bingo\app\main.py" />
+      <option name="file" value="C:\Users\user\PycharmProjects\Bingo\main.py" />
       <module name="Bingo" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="$PROJECT_DIR$/.venv/Scripts/python.exe" />
+      <option name="SDK_HOME" value="$USER_HOME$/PycharmProjects/Bingo/.venv/Scripts/python.exe" />
       <option name="SDK_NAME" value="Python 3.13 (Bingo)" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -110,23 +102,24 @@
       <option name="launchJavascriptDebuger" value="false" />
       <method v="2" />
     </configuration>
-    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
-      <deployment type="docker-compose.yml">
-        <settings />
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="Unnamed" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
+          <option name="envFilePath" value="" />
           <option name="commandLineOptions" value="--build" />
           <option name="sourceFilePath" value="compose.yaml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
     <list>
-      <item itemvalue="Docker.compose.yaml: Compose Deployment" />
+      <item itemvalue="Docker.Unnamed" />
       <item itemvalue="FastAPI.app" />
       <item itemvalue="HTTP Request.test_main | #5" />
       <item itemvalue="HTTP Request.test_main | #3" />
@@ -134,7 +127,6 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.compose.yaml: Compose Deployment" />
         <item itemvalue="HTTP Request.test_main | #5" />
         <item itemvalue="HTTP Request.test_main | #4" />
         <item itemvalue="HTTP Request.test_main | #3" />
@@ -144,8 +136,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-e03c56caf84a-JavaScript-PY-252.23892.439" />
-        <option value="bundled-python-sdk-b3ae9b5d7125-f0eec537fc84-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.23892.439" />
+        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-PY-251.26927.90" />
+        <option value="bundled-python-sdk-41e8cd69c857-64d779b69b7a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.26927.90" />
       </set>
     </attachedChunks>
   </component>
@@ -177,6 +169,7 @@
       <workItem from="1756641786154" duration="1100000" />
       <workItem from="1756643686725" duration="43000" />
       <workItem from="1756644287663" duration="4574000" />
+      <workItem from="1757261561636" duration="1754000" />
     </task>
     <servers />
   </component>

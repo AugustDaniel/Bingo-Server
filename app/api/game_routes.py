@@ -34,5 +34,5 @@ def reset_game(service: GameService = Depends(get_game_service)):
 @router.post("/rooms/{room_id}/players", response_model=RoomJoinResponse)
 def join_room(room_id: str, player_post: PlayerPostModel, service: GameService = Depends(get_game_service)):
     room, player = service.join_room(room_id, player_post)
-    websocket_url = f'/play/ws/{room_id}?player_id={player.id}'
+    websocket_url = f'play/ws/{room_id}?player_id={player.id}'
     return RoomJoinResponse(room=room, websocket_url=websocket_url)
