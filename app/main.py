@@ -1,3 +1,5 @@
+import logging
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -25,3 +27,7 @@ app.add_middleware(
 
 app.include_router(game_routes.router)
 app.include_router(play_routes.router)
+
+logging.basicConfig(level=logging.DEBUG,
+                    format="%(asctime)s | %(levelname)-8s | "
+                           "%(module)s:%(funcName)s:%(lineno)d - %(message)s")
