@@ -18,7 +18,7 @@ class PlayService:
         self.game = game
         self.connection_manager: dict[str, ConnectionManager] = {}  # room_id -> connection manager
 
-    async def connect(self, websocket: WebSocket, room_id: str) -> None:
+    async def connect(self, websocket: WebSocket, room_id: str) -> Connection:
         logger.info(f"connect {room_id}")
         await websocket.accept()
         player_id = websocket.query_params.get('player_id')
@@ -37,8 +37,6 @@ class PlayService:
                .setdefault(joined_room.room_id, ConnectionManager())
                .add_connection(connection))
 
-        asyncio.create_task(self.__listen_for_messages(connection))
-
         try:
             await connection.send(
                 BingoCardMessage(
@@ -47,11 +45,13 @@ class PlayService:
             )
         except:
             await self.disconnect(connection)
-            return
+            raise InvalidWebSocketJoin("Card could not be sent")
 
         if not self.game.rooms[room_id].is_started:
             logger.info("creating room: " + room_id)
             asyncio.create_task(self.__start_room(joined_room))
+
+        return connection
 
     async def disconnect(self, connection: Connection):
         try:
@@ -122,7 +122,8 @@ class PlayService:
         for connection in await self.connection_manager[room.room_id].get_connections():
             await self.disconnect(connection)
 
-    async def __listen_for_messages(self, connection: Connection):
+    async def listen_for_messages(self, connection: Connection):
+        logger.info("start listening for messages")
         try:
             while True:
                 try:

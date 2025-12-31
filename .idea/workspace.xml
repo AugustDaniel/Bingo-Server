@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b68ef968-26cf-49be-aca2-945aee04b2ea" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Bingo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Bingo.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/play/connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/play/connection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/play_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/play_routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/services/play/play.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/play/play.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +67,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -94,7 +96,6 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="$USER_HOME$/PycharmProjects/Bingo/.venv/Scripts/python.exe" />
-      <option name="SDK_NAME" value="Python 3.13 (Bingo)" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -107,6 +108,11 @@
       <deployment type="docker-compose.yml">
         <settings>
           <option name="envFilePath" value="" />
+          <option name="envFilePaths">
+            <list>
+              <option value="" />
+            </list>
+          </option>
           <option name="commandLineOptions" value="--build" />
           <option name="sourceFilePath" value="compose.yaml" />
         </settings>
@@ -137,8 +143,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-PY-251.26927.90" />
-        <option value="bundled-python-sdk-41e8cd69c857-64d779b69b7a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.26927.90" />
+        <option value="bundled-js-predefined-d6986cc7102b-a71380e98a7c-JavaScript-PY-252.28238.29" />
+        <option value="bundled-python-sdk-a101402ee41c-968fe969f28a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.28238.29" />
       </set>
     </attachedChunks>
   </component>
@@ -172,6 +178,10 @@
       <workItem from="1756644287663" duration="4574000" />
       <workItem from="1757261561636" duration="7561000" />
       <workItem from="1757275164274" duration="5289000" />
+      <workItem from="1767048578345" duration="1858000" />
+      <workItem from="1767052023067" duration="958000" />
+      <workItem from="1767140140032" duration="3343000" />
+      <workItem from="1767178941316" duration="1193000" />
     </task>
     <servers />
   </component>
