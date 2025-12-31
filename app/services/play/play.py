@@ -86,7 +86,7 @@ class PlayService:
         #TODO add check if player didnt have bingo before
         if bingo:
             await self.room_broadcast(connection.room,
-                                      ValidBingoMessage(
+                                      BingoBroadcast(
                                         message=connection.player.name
                                         ),
                                       [connection])

@@ -16,7 +16,12 @@ class InvalidBingoMessage(WebSocketMessage):
 
 class ValidBingoMessage(WebSocketMessage):
     type: Literal["valid_bingo"] = "valid_bingo"
-    message: str  # contains name of the player who has gotten a bingo
+    message: str  # valid bingo message
+
+
+class BingoBroadcast(WebSocketMessage):
+    type: Literal["bingo"] = "bingo"
+    message: str # contains name of the player who has gotten a bingo
 
 
 class NewDrawMessage(WebSocketMessage):
