@@ -62,19 +62,22 @@ class ConnectionManager:
         async with self.__lock:
             return list(self.__connections)
 
-    async def broadcast(self, message: WebSocketMessage) -> dict[str, list]:
+    async def broadcast(self, message: WebSocketMessage, excluded: list[Connection]=None) -> dict[str, list]:
+        if excluded is None:
+            excluded = []
         connections = await self.get_connections()
         report = {
             "success": [],
             "failed": [],
         }
         for connection in connections:
-            try:
-                await connection.send(message)
-                report["success"].append(connection)
-            except Exception as e:
-                logger.error("failed broadcast ")
-                report["failed"].append(connection)
+            if connection not in excluded:
+                try:
+                    await connection.send(message)
+                    report["success"].append(connection)
+                except Exception as e:
+                    logger.error("failed broadcast ")
+                    report["failed"].append(connection)
 
         return report
 

@@ -62,8 +62,8 @@ class PlayService:
             logger.exception("unable to remove connection" + e)
             pass
 
-    async def room_broadcast(self, room: Room, message: WebSocketMessage):
-        report = await self.connection_manager[room.room_id].broadcast(message)
+    async def room_broadcast(self, room: Room, message: WebSocketMessage, excluded: list[Connection]):
+        report = await self.connection_manager[room.room_id].broadcast(message, excluded)
 
         failed = report["failed"]
         for connection in failed:
@@ -83,11 +83,13 @@ class PlayService:
 
     async def handle_bingo(self, connection: Connection):
         bingo = connection.room.check_bingo(connection.player)
-
+        #TODO add check if player didnt have bingo before
         if bingo:
-            await self.room_broadcast(connection.room, ValidBingoMessage(
-                message=connection.player.name
-            ))
+            await self.room_broadcast(connection.room,
+                                      ValidBingoMessage(
+                                        message=connection.player.name
+                                        ),
+                                      [connection])
         else:
             await connection.send(InvalidBingoMessage(
                 message="Invalid bingo"
