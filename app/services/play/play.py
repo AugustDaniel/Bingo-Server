@@ -62,7 +62,7 @@ class PlayService:
             logger.exception("unable to remove connection" + e)
             pass
 
-    async def room_broadcast(self, room: Room, message: WebSocketMessage, excluded: list[Connection]):
+    async def room_broadcast(self, room: Room, message: WebSocketMessage, excluded: list[Connection]=None):
         report = await self.connection_manager[room.room_id].broadcast(message, excluded)
 
         failed = report["failed"]
