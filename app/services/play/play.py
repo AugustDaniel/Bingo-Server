@@ -19,12 +19,12 @@ class PlayService:
         self.connection_manager: dict[str, ConnectionManager] = {}  # room_id -> connection manager
 
     async def connect(self, websocket: WebSocket, room_id: str) -> Connection:
-        logger.info(f"connect {room_id}")
-        await websocket.accept()
         player_id = websocket.query_params.get('player_id')
-
         if room_id not in self.game.rooms or player_id not in self.game.rooms[room_id].players:
             raise InvalidWebSocketJoin("This websocket url is not valid")
+
+        logger.info(f"connect {room_id}")
+        await websocket.accept()
 
         joined_room: Room = self.game.rooms[room_id]
         connection = Connection(
@@ -59,7 +59,7 @@ class PlayService:
             await self.connection_manager[connection.room.room_id].remove_connection(connection)
             del self.game.rooms[connection.room.room_id].players[connection.player.id]
         except Exception as e:
-            logger.exception("unable to remove connection" + e)
+            logger.exception("unable to remove connection")
             pass
 
     async def room_broadcast(self, room: Room, message: WebSocketMessage, excluded: list[Connection]=None):
@@ -128,7 +128,6 @@ class PlayService:
             await self.disconnect(connection)
 
     async def listen_for_messages(self, connection: Connection):
-        logger.info("start listening for messages")
         try:
             while True:
                 try:
@@ -136,7 +135,7 @@ class PlayService:
                     await self.handle_message(message, connection)
                 except ValidationError as e:
                     await connection.send(ErrorMessage(
-                        message="Invalid message received",
+                        message=e,
                     ))
         except:
             logger.info("disconnect")
