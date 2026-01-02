@@ -135,8 +135,8 @@ class PlayService:
                     await self.handle_message(message, connection)
                 except ValidationError as e:
                     await connection.send(ErrorMessage(
-                        message=e,
+                        message=str(e),
                     ))
-        except:
-            logger.info("disconnect")
+        except Exception as e:
+            logger.info(e)
             await self.disconnect(connection)
