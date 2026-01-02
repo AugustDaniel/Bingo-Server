@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="b68ef968-26cf-49be-aca2-945aee04b2ea" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/play/connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/play/connection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/bingo_card/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/bingo_card/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/bingo_card/cell.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/bingo_card/cell.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/session/caller.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/session/caller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/session/room.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/session/room.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/mapper/response_mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/mapper/response_mapper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/services/play/play.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/play/play.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -182,7 +186,7 @@
       <workItem from="1767178941316" duration="1625000" />
       <workItem from="1767197672322" duration="11895000" />
       <workItem from="1767279255960" duration="1952000" />
-      <workItem from="1767288056962" duration="4421000" />
+      <workItem from="1767288056962" duration="6640000" />
     </task>
     <servers />
   </component>

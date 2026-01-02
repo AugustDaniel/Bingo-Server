@@ -6,7 +6,7 @@ from pydantic import ValidationError
 
 from app.core import Game, Room
 from app.exceptions import InvalidWebSocketJoin
-from app.mapper import map_bingo_card_to_response
+from app.mapper import map_bingo_card_to_response, map_response_to_bingo_card
 from app.models.websocket import *
 from .connection import ConnectionManager, Connection
 
@@ -75,13 +75,14 @@ class PlayService:
 
         match msg_type:
             case "bingo":
-                await self.handle_bingo(connection)
+                await self.handle_bingo(connection, message.message)
             case "leave":
                 await self.disconnect(connection)
             case _:
                 pass
 
-    async def handle_bingo(self, connection: Connection):
+    async def handle_bingo(self, connection: Connection, card: BingoCardModel):
+        connection.player.cards[0] = map_response_to_bingo_card(card)
         bingo = connection.room.check_bingo(connection.player)
         #TODO add check if player didnt have bingo before
         if bingo:

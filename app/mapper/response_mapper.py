@@ -1,4 +1,4 @@
-from app.core import Room, Game, Player, BingoCard
+from app.core import Room, Game, Player, BingoCard, BingoCardCell
 from app.models import RoomModel, GameModel, PlayerModel, BingoCardModel, BingoCardCellModel
 
 
@@ -39,4 +39,14 @@ def map_bingo_card_to_response(bingo_card: BingoCard) -> BingoCardModel:
             ]
             for column in bingo_card.card
         ]
+    )
+
+
+def map_response_to_bingo_card(bingo_card: BingoCardModel) -> BingoCard:
+    return BingoCard(
+        [
+            [
+                BingoCardCell(cell.content, cell.scratched)
+            for cell in row]
+        for row in bingo_card.card]
     )
